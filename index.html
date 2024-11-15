@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Noodles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <style>
+        /* Gaya Umum */
+body {
+    font-family: "Chewy", sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth; /* Efek scroll smooth */
+}
+
+header {
+    background: linear-gradient(45deg, #6a1b9a, #ffca28); /* Gradasi ungu dan emas */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #ff7043;
+}
+
+section {
+    background: linear-gradient(45deg, #ffe0b2, #ffa726); /* Gradasi krem ke oranye untuk bagian section */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Menu Item */
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-wrap: wrap; /* Membuat item fleksibel untuk responsif */
+}
+
+.menu-item:hover {
+    transform: scale(1.02); /* Efek hover agar item sedikit membesar */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bayangan lebih besar saat hover */
+}
+
+.menu-item img {
+    width: 150px; /* Ukuran gambar yang lebih besar dan konsisten */
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover; /* Agar gambar tetap proporsional */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan pada gambar */
+    transition: transform 0.3s ease;
+    margin-right: 20px; /* Menambahkan jarak antara gambar dan teks */
+}
+
+.menu-item img:hover {
+    transform: scale(1.05); /* Efek pembesaran saat gambar dihover */
+}
+
+.menu-details {
+    flex-grow: 1;
+    margin-left: 20px;
+    text-align: left;
+    padding-right: 20px; /* Memberikan jarak agar lebih rapi */
+}
+
+.menu-details h2 {
+    margin: 0;
+    color: #333;
+}
+
+.menu-details p {
+    color: #555;
+    margin: 5px 0 10px;
+}
+
+.menu-details .price {
+    font-size: 18px;
+    color: #ff7043;
+    font-weight: bold;
+}
+
+.order-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.order-button {
+    background-color: #ff7043;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.order-button:hover {
+    background-color: #e64a19;
+    transform: scale(1.05);
+}
+
+#buyer-info {
+    background: linear-gradient(45deg, #ffe0b2, #ff7043); /* Gradasi krem ke oranye gelap untuk informasi pembeli */
+    padding: 30px 20px;
+    text-align: left;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#buyer-info input,
+#buyer-info textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#buyer-info button {
+    display: block;
+    width: 100%;
+    background-color: #ff7043;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#buyer-info button:hover {
+    background-color: #e64a19;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Chicken Noodles</h1>
+        <p>"Lezatnya mie ayam dan bakso dengan harga terjangkau!"</p>
+        <nav>
+            <a href="#menu">Menu</a>
+            <a href="#buyer-info">Informasi Pembeli</a>
+        </nav>
+    </header>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <!-- Menu Items -->
+            <div class="menu-item">
+                <img src="alt1.jpeg" alt="Mie Bakso">
+                <div class="menu-details">
+                    <h2>Mie Bakso</h2>
+                    <p>"Mie kenyal berpadu dengan bakso gurih."</p>
+                    <p class="price">Rp 10,000</p>
+                </div>
+                <div class="order-actions">
+                    <input type="number" class="quantity-input" id="qty-mie-bakso" min="1" placeholder="Jumlah">
+                    <button class="order-button" onclick="addToCart('Mie Bakso', 'qty-mie-bakso')">Pesan</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="alt2.jpeg" alt="Mie Ayam Bakso">
+                <div class="menu-details">
+                    <h2>Mie Ayam Bakso</h2>
+                    <p>"Mie ayam lezat dengan tambahan bakso."</p>
+                    <p class="price">Rp 7,000</p>
+                </div>
+                <div class="order-actions">
+                    <input type="number" class="quantity-input" id="qty-mie-ayam-bakso" min="1" placeholder="Jumlah">
+                    <button class="order-button" onclick="addToCart('Mie Ayam Bakso', 'qty-mie-ayam-bakso')">Pesan</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="alt3.jpeg" alt="Mie Ayam">
+                <div class="menu-details">
+                    <h2>Mie Ayam</h2>
+                    <p>"Mie ayam klasik dengan rasa otentik."</p>
+                    <p class="price">Rp 5,000</p>
+                </div>
+                <div class="order-actions">
+                    <input type="number" class="quantity-input" id="qty-mie-ayam" min="1" placeholder="Jumlah">
+                    <button class="order-button" onclick="addToCart('Mie Ayam', 'qty-mie-ayam')">Pesan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buyer Information Section -->
+    <section id="buyer-info">
+        <h2>Informasi Pembeli</h2>
+        <form onsubmit="submitOrder(event)">
+            <input type="text" id="buyer-name" placeholder="Nama Pembeli" required>
+            <input type="text" id="buyer-address" placeholder="Alamat" required>
+            <textarea id="buyer-order" placeholder="Pesanan" rows="4" readonly required></textarea>
+            <button type="submit">Kirim Pesanan</button>
+        </form>
+    </section>
+
+    <!-- Script -->
+    <script>
+        const orders = [];
+
+        function addToCart(menu, inputId) {
+            const quantityInput = document.getElementById(inputId);
+            const quantity = parseInt(quantityInput.value) || 0;
+
+            if (quantity > 0) {
+                orders.push(`${menu} x${quantity}`);
+                document.getElementById("buyer-order").value = orders.join("\n");
+                alert(`${menu} sebanyak ${quantity} berhasil ditambahkan ke pesanan.`);
+                quantityInput.value = ""; // Reset input
+            } else {
+                alert("Masukkan jumlah yang valid!");
+            }
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            const name = document.getElementById("buyer-name").value;
+            const address = document.getElementById("buyer-address").value;
+            const order = document.getElementById("buyer-order").value;
+
+            if (!name || !address || !order) {
+                alert("Harap lengkapi semua informasi pembeli!");
+                return;
+            }
+
+            const whatsappUrl = `https://wa.me/62895328463012?text=Halo,%20saya%20${name}%20dari%20${address}%20ingin%20memesan:%20${encodeURIComponent(order)}`;
+            window.open(whatsappUrl, "_blank");
+        }
+    </script>
+</body>
+</html>
